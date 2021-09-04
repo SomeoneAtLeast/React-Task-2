@@ -1,18 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-// import { fetchFilms } from '../../store/action-creators/film';
+
 import NoFilms from '../NoFilms';
+import FilmsSearch from '../FilmsSearch';
 
 const FilmsList: React.FC = () => {
   const { firstRun, films, loading, error } = useTypedSelector(
     state => state.film
   );
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchFilms());
-  // }, [1]);
 
   if (loading) {
     return <h1>Идет загрузка...</h1>;
@@ -24,6 +19,7 @@ const FilmsList: React.FC = () => {
 
   return (
     <div className="films-list-wrapper">
+      <FilmsSearch />
       {firstRun ? (
         <NoFilms />
       ) : (
