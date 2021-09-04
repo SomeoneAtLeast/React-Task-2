@@ -1,8 +1,14 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.scss';
 
-function App() {
-  return <div className="App"></div>;
-}
+import FilmsList from './FilmsList';
+
+const App: React.FC = () => {
+  return (
+    <div className="app">
+      <FilmsList />
+    </div>
+  );
+};
 
 export default App;

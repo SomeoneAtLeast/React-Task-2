@@ -1,35 +1,33 @@
-const FETCH_FILMS = "FETCH_FILMS";
-const FETCH_FILMS_SUCCES = "FETCH_FILMS_SUCCES";
-const FETCH_FILMS_ERROR = "FETCH_FILMS_ERROR";
-
-interface FilmState {
-  films: any[];
-  loading: boolean;
-  error: null | string;
-}
-
-interface FilmAction {
-  type: string;
-  payload?: any;
-}
+import { FilmAction, FilmActionTypes, FilmState } from '../../types/film';
 
 const initialState: FilmState = {
+  firstRun: true,
   films: [],
   loading: false,
   error: null,
 };
 
-export const firtsReduser = (
+export const filmReducer = (
   state = initialState,
   action: FilmAction
 ): FilmState => {
   switch (action.type) {
-    case FETCH_FILMS:
-      return { loading: true, error: null, films: [] };
-    case FETCH_FILMS_SUCCES:
-      return { loading: false, error: null, films: action.payload };
-    case FETCH_FILMS_ERROR:
-      return { loading: false, error: action.payload, films: [] };
+    case FilmActionTypes.FETCH_FILMS:
+      return { firstRun: false, films: [], loading: true, error: null };
+    case FilmActionTypes.FETCH_FILMS_SUCCES:
+      return {
+        firstRun: false,
+        films: action.payload,
+        loading: false,
+        error: null,
+      };
+    case FilmActionTypes.FETCH_FILMS_ERROR:
+      return {
+        firstRun: false,
+        films: [],
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
