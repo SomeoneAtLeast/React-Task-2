@@ -1,7 +1,15 @@
 import React from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const NoFilms: React.FC = () => {
-  return <div className="no-films">Фильмов нет</div>;
+  const { firstRun, films } = useTypedSelector(state => state.film);
+
+  return (
+    <div className="no-films">
+      {firstRun && 'Начните ваш первый поиск!'}
+      {!firstRun && films[0].Error ? 'Ничего не нашлось :(' : null}
+    </div>
+  );
 };
 
 export default NoFilms;
