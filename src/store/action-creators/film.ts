@@ -8,12 +8,12 @@ export const fetchFilms = (searchTitle: string) => {
       dispatch({ type: FilmActionTypes.FETCH_FILMS });
       console.log(searchTitle);
       const response = await axios.get(
-        'http://www.omdbapi.com/?i=tt3896198&apikey=84f1a8f9',
-        { params: { t: searchTitle } }
+        'http://www.omdbapi.com/?apikey=84f1a8f9',
+        { params: { s: searchTitle } }
       );
       dispatch({
         type: FilmActionTypes.FETCH_FILMS_SUCCES,
-        payload: response.data,
+        payload: response.data.Search,
       });
     } catch (e) {
       dispatch({

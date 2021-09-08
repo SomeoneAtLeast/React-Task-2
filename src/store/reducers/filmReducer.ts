@@ -23,7 +23,7 @@ export const filmReducer = (
       return {
         ...state,
         firstRun: false,
-        films: [action.payload],
+        films: action.payload,
         loading: false,
         error: null,
       };

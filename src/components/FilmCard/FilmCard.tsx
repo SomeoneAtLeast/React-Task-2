@@ -10,9 +10,8 @@ const FilmCard: React.FC<FilmCardProps> = ({ title, year }) => {
   return (
     <li className="film-card">
       <h3 className="film-card__title">{title}</h3>
-      <div>
-        <span>Год:</span>
-        <span>{year}</span>
+      <div className="film-card__info">
+        <span>Год: {year}</span>
       </div>
     </li>
   );

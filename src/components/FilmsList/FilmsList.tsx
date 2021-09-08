@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import './FilmsList.scss';
 
 import NoFilms from '../NoFilms';
 import FilmsSearch from '../FilmsSearch';
@@ -14,7 +15,7 @@ const FilmsList: React.FC = () => {
     return <h1>{error}</h1>;
   }
 
-  console.log(films.length);
+  console.log(films);
 
   return (
     <div className="films-list-wrapper">

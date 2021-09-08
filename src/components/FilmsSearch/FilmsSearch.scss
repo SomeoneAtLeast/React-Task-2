@@ -1,0 +1,24 @@
+.films-search {
+  display: flex;
+  justify-content: center;
+}
+
+.films-search__input {
+  text-align: center;
+  &-title {
+    width: 50%;
+  }
+
+  &-year {
+    width: 10%;
+  }
+
+  &-type {
+    width: 10%;
+  }
+}
+
+.btn {
+  flex-grow: 1;
+  margin-left: 15px;
+}

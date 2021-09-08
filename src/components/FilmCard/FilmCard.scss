@@ -1,11 +1,28 @@
 .film-card {
-  padding: 10px 20px;
+  box-sizing: border-box;
+  padding: 10px 20px 21px 20px;
   list-style: none;
-  width: 250px;
-  background-color: bisque;
+  width: 260px;
+  background-color: #333;
+  color: #f3f3f3;
+  border: 2px solid rgb(243, 243, 243);
+  border-radius: 10px;
+  margin-bottom: 25px;
 }
 
 .film-card__title {
   font-size: 16px;
   text-align: center;
+}
+
+.film-card__info {
+  display: flex;
+  flex-wrap: wrap;
+
+  span {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    width: 100%;
+  }
 }

@@ -1,14 +1,14 @@
 .btn {
-  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  outline: none;
+  border: 2px solid rgb(243, 243, 243);
   border-radius: 5px;
-  text-decoration: none;
-  color: black;
+  color: rgb(243, 243, 243);
   background-color: transparent;
-  width: 80%;
-  text-align: center;
-  padding: 10px 0;
-  transition: 0.2s;
   cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
 
   &:hover {
     transform: scale(0.95);
