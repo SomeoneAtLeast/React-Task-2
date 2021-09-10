@@ -3,7 +3,8 @@
   justify-content: center;
 }
 
-.films-search__input {
+.films-search__input,
+.films-search__select {
   text-align: center;
   &-title {
     width: 50%;

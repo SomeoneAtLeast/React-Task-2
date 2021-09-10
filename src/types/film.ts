@@ -1,7 +1,11 @@
 export interface FilmState {
   firstRun: boolean;
   films: any;
-  searchTitle: string;
+  searchData: {
+    title: string;
+    type: string;
+    year: string;
+  };
   loading: boolean;
   error: null | string;
 }
@@ -29,7 +33,7 @@ interface FetchFilmsErrorAction {
 
 interface SetFilmsSearchData {
   type: FilmActionTypes.SET_FILMS_SEARCH_DATA;
-  payload: string;
+  payload: { title: string; type: string; year: string };
 }
 
 export type FilmAction =

@@ -3,12 +3,15 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import './NoFilms.scss';
 
 const NoFilms: React.FC = () => {
-  const { firstRun, films } = useTypedSelector(state => state.film);
+  const { firstRun, loading, films } = useTypedSelector(state => state.film);
 
   return (
     <div className="no-films">
       {firstRun && 'Начните ваш первый поиск!'}
-      {!firstRun && films[0].Error ? 'Ничего не нашлось :(' : null}
+      {!firstRun && !films && !loading
+        ? 'Ничего не нашлось или результатов слишком много :('
+        : null}
+      {!firstRun && loading ? 'Идет загрузка...' : null}
     </div>
   );
 };

@@ -4,14 +4,16 @@ type InputProps = {
   children: string;
   func?: any;
   className: string;
+  name: string;
 };
 
-const Input: React.FC<InputProps> = ({ children, className, func }) => {
+const Input: React.FC<InputProps> = ({ children, className, func, name }) => {
   return (
     <input
       className={className}
+      name={name}
       placeholder={children}
-      onChange={e => func(e.target.value)}
+      onChange={e => func(e)}
     />
   );
 };

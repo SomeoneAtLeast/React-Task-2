@@ -3,7 +3,11 @@ import { FilmAction, FilmActionTypes, FilmState } from '../../types/film';
 const initialState: FilmState = {
   firstRun: true,
   films: [],
-  searchTitle: '',
+  searchData: {
+    title: '',
+    type: 'movie',
+    year: '',
+  },
   loading: false,
   error: null,
 };
@@ -38,7 +42,11 @@ export const filmReducer = (
     case FilmActionTypes.SET_FILMS_SEARCH_DATA:
       return {
         ...state,
-        searchTitle: action.payload,
+        searchData: {
+          title: action.payload.title,
+          type: action.payload.type,
+          year: action.payload.year,
+        },
       };
     default:
       return state;

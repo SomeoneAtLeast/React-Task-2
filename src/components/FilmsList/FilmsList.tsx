@@ -15,29 +15,32 @@ const FilmsList: React.FC = () => {
     return <h1>{error}</h1>;
   }
 
-  console.log(films);
-
   return (
     <div className="films-list-wrapper">
       <FilmsSearch />
-      {firstRun || films[0].Error ? (
+      {firstRun || !films || loading ? (
         <NoFilms />
       ) : (
         <ul className="films-list">
-          {loading ? (
-            <h1>Идет загрузка...</h1>
-          ) : (
-            films.map(
-              (film: { Title: string; imdbID: string; Year: string }) => {
-                return (
-                  <FilmCard
-                    key={film.imdbID}
-                    title={film.Title}
-                    year={film.Year}
-                  />
-                );
-              }
-            )
+          {films.map(
+            (film: {
+              Poster: string;
+              Title: string;
+              imdbID: string;
+              Year: string;
+              Type: string;
+            }) => {
+              return (
+                <FilmCard
+                  key={film.imdbID}
+                  title={film.Title}
+                  year={film.Year}
+                  poster={film.Poster}
+                  type={film.Type}
+                  imdbId={film.imdbID}
+                />
+              );
+            }
           )}
         </ul>
       )}
