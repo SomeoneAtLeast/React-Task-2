@@ -3,13 +3,15 @@ import { FilmAction, FilmActionTypes, FilmState } from '../../types/film';
 const initialState: FilmState = {
   firstRun: true,
   films: [],
+  film: {},
   searchData: {
     title: '',
     type: 'movie',
     year: '',
   },
-  loading: false,
+  loading: true,
   error: null,
+  page: 1,
 };
 
 export const filmReducer = (
@@ -39,6 +41,26 @@ export const filmReducer = (
         loading: false,
         error: action.payload,
       };
+    case FilmActionTypes.FETCH_FILM:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FilmActionTypes.FETCH_FILM_SUCCES:
+      return {
+        ...state,
+        film: action.payload,
+        loading: false,
+        error: null,
+      };
+    case FilmActionTypes.FETCH_FILM_ERROR:
+      return {
+        ...state,
+        film: {},
+        loading: false,
+        error: action.payload,
+      };
     case FilmActionTypes.SET_FILMS_SEARCH_DATA:
       return {
         ...state,
@@ -47,6 +69,16 @@ export const filmReducer = (
           type: action.payload.type,
           year: action.payload.year,
         },
+      };
+    case FilmActionTypes.SET_PAGE:
+      return {
+        ...state,
+        page: action.payload,
+      };
+    case FilmActionTypes.SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return state;

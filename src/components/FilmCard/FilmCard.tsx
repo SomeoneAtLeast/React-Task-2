@@ -1,13 +1,13 @@
 import React from 'react';
 import './FilmCard.scss';
 
-type FilmCardProps = {
+interface FilmCardProps {
   title: string;
   year: string;
   poster: string;
   type: string;
   imdbId: string;
-};
+}
 
 const FilmCard: React.FC<FilmCardProps> = ({
   title,

@@ -1,13 +1,16 @@
 import React from 'react';
 import './Button.scss';
 
-type ButtonProps = {
+interface ButtonProps {
   func: any;
   children: React.ReactNode;
-};
+  disabled?: boolean;
+}
 
-const Button: React.FC<ButtonProps> = ({ children, func }) => {
-  const classNames = 'btn';
+const Button: React.FC<ButtonProps> = ({ children, func, disabled }) => {
+  let classNames = 'btn';
+
+  if (disabled) classNames += ' btn--disabled';
 
   return (
     <button className={classNames} onClick={func}>

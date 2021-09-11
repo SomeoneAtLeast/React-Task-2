@@ -1,11 +1,11 @@
 import React from 'react';
 
-type InputProps = {
+interface InputProps {
   children: string;
   func?: any;
   className: string;
   name: string;
-};
+}
 
 const Input: React.FC<InputProps> = ({ children, className, func, name }) => {
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
 
-type SelectProps = {
+interface SelectProps {
   func?: any;
   options: string[];
   name: string;
   className: string;
-};
+}
 
 const Select: React.FC<SelectProps> = ({ name, options, func, className }) => {
   return (

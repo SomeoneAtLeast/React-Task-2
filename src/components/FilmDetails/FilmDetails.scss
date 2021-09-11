@@ -1,0 +1,17 @@
+.films-details {
+  display: flex;
+  align-items: flex-start;
+  width: 60%;
+  margin: 100px auto 0 auto;
+  color: rgb(243, 243, 243);
+}
+
+.films-details__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.films-details__img {
+  max-width: 250px;
+}

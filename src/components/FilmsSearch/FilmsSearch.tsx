@@ -8,8 +8,8 @@ import Button from '../UI/Button';
 import Select from '../UI/Select';
 
 const FilmsSearch: React.FC = () => {
-  const { fetchFilms, setFilmsSearchData } = useActions();
-  const { searchData } = useTypedSelector(state => state.film);
+  const { fetchFilms, setFilmsSearchData, setPage } = useActions();
+  const { searchData, page } = useTypedSelector(state => state.film);
   const { title, type, year } = searchData;
 
   const onChangeSearchData = (e: {
@@ -19,6 +19,15 @@ const FilmsSearch: React.FC = () => {
       ...searchData,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const findFilms = () => {
+    if (page === 1) {
+      fetchFilms(title, type, year, page);
+    } else {
+      setPage(1);
+    }
+    setPage(1);
   };
 
   return (
@@ -43,7 +52,7 @@ const FilmsSearch: React.FC = () => {
         options={['movie', 'series', 'episode']}
         func={onChangeSearchData}
       />
-      <Button func={() => fetchFilms(title, type, year)}>Показать</Button>
+      <Button func={findFilms}>Показать</Button>
     </div>
   );
 };
