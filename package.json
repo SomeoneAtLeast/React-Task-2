@@ -22,9 +22,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,11 +53,32 @@
     "@types/react-router-dom": "^5.1.8",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.1",
     "eslit": "^6.0.0",
     "prettier": "2.3.2"
+  },
+  "jest": {
+    "verbose": true,
+    "clearMocks": true,
+    "collectCoverage": true,
+    "setupFilesAfterEnv": [
+      "./config/setupTest.js"
+    ],
+    "snapshotSerializers": [
+      "./node_modules/enzyme-to-json/serializer"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./__mocks__/fileMock.js",
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   }
 }
