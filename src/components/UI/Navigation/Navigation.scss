@@ -1,0 +1,31 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.navigation-link {
+  box-sizing: border-box;
+  padding: 5px 30px;
+  outline: none;
+  border: 2px solid rgb(243, 243, 243);
+  border-radius: 5px;
+  text-decoration: none;
+  color: rgb(243, 243, 243);
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+
+&:not(:first-child) {
+  margin-left: 20px;
+}
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

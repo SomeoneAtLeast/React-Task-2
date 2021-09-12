@@ -11,6 +11,7 @@ const FilmsSearch: React.FC = () => {
   const { fetchFilms, setFilmsSearchData, setPage } = useActions();
   const { searchData, page } = useTypedSelector(state => state.film);
   const { title, type, year } = searchData;
+  const options = ['movie', 'series', 'episode'];
 
   const onChangeSearchData = (e: {
     target: { name: string; value: string };
@@ -49,7 +50,7 @@ const FilmsSearch: React.FC = () => {
       <Select
         className="films-search__select films-search__select-type"
         name="type"
-        options={['movie', 'series', 'episode']}
+        options={options}
         func={onChangeSearchData}
       />
       <Button func={findFilms}>Показать</Button>
