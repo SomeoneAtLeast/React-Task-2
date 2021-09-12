@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { useParams } from 'react-router-dom';
-import './FilmDetails.scss';
+import './FilmDetailsPage.scss';
 
-import NoFilms from '../NoFilms';
+import NoFilms from '../../components/NoFilms';
 
-const FilmDetails: React.FC = () => {
+const FilmDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { film, loading } = useTypedSelector(state => state.film);
 
@@ -42,4 +42,4 @@ const FilmDetails: React.FC = () => {
   );
 };
 
-export default FilmDetails;
+export default FilmDetailsPage;

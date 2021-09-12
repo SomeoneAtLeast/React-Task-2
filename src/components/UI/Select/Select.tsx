@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface SelectProps {
-  func?: any;
+  func: (e: { target: { name: string; value: string } }) => void;
   options: string[];
   name: string;
   className: string;

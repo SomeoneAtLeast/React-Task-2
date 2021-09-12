@@ -2,21 +2,26 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { FilmAction, FilmActionTypes } from '../../types/film';
 
+const { REACT_APP_API_URL, REACT_APP_API_KEY } = process.env;
+
 export const fetchFilms = (
   title?: string,
   type?: string,
   year?: string,
   page?: number
 ) => {
-  return async (dispatch: Dispatch<FilmAction>) => {
+  return async (dispatch: Dispatch<FilmAction>): Promise<void> => {
     try {
       dispatch({ type: FilmActionTypes.FETCH_FILMS });
-      const response = await axios.get(
-        'http://www.omdbapi.com/?apikey=84f1a8f9',
-        {
-          params: { s: title, type: type, y: year, page: page },
-        }
-      );
+      const response = await axios.get(`${REACT_APP_API_URL}`, {
+        params: {
+          apikey: REACT_APP_API_KEY,
+          s: title,
+          type: type,
+          y: year,
+          page: page,
+        },
+      });
       dispatch({
         type: FilmActionTypes.FETCH_FILMS_SUCCES,
         payload: response.data.Search,
@@ -31,7 +36,7 @@ export const fetchFilms = (
 };
 
 export const fetchOneFilm = (imdbId: string) => {
-  return async (dispatch: Dispatch<FilmAction>) => {
+  return async (dispatch: Dispatch<FilmAction>): Promise<void> => {
     try {
       dispatch({ type: FilmActionTypes.FETCH_FILM });
       const response = await axios.get(
@@ -53,7 +58,11 @@ export const fetchOneFilm = (imdbId: string) => {
   };
 };
 
-export const setFilmsSearchData = (searchData: any): FilmAction => {
+export const setFilmsSearchData = (searchData: {
+  title: string;
+  type: string;
+  year: string;
+}): FilmAction => {
   return {
     type: FilmActionTypes.SET_FILMS_SEARCH_DATA,
     payload: {

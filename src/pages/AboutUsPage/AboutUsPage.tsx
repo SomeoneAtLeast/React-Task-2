@@ -1,7 +1,7 @@
 import React from 'react';
-import './AboutUs.scss';
+import './AboutUsPage.scss';
 
-const AboutUs: React.FC = () => {
+const AboutUsPage: React.FC = () => {
   return (
     <div className="about-us">
       <h1>О нас:</h1>
@@ -10,4 +10,4 @@ const AboutUs: React.FC = () => {
   );
 };
 
-export default AboutUs;
+export default AboutUsPage;

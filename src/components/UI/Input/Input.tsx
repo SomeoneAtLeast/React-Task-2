@@ -2,7 +2,7 @@ import React from 'react';
 
 interface InputProps {
   children: string;
-  func?: any;
+  func: (e: { target: { name: string; value: string } }) => void;
   className: string;
   name: string;
 }

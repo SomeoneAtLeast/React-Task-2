@@ -5,8 +5,16 @@ import './Pagination.scss';
 import Button from '../Button';
 
 interface PaginationProps {
-  setPage: any;
-  films: any[];
+  setPage: (page: number) => void;
+  films:
+    | {
+        Title: string;
+        Year: string;
+        imdbID: string;
+        Type: string;
+        Poster: string;
+      }[]
+    | [];
   loading: boolean;
   filmsOnPage: number;
 }
@@ -22,7 +30,10 @@ const Pagination: React.FC<PaginationProps> = ({
   const [cantBack, setCantBack] = useState(true);
   const [cantNext, setCantNext] = useState(false);
 
-  const onChangePage = (changeFunc: any, direction: string) => {
+  const onChangePage = (
+    changeFunc: (page: number) => void,
+    direction: string
+  ) => {
     if (page > 1 && direction === 'back' && !loading) changeFunc(page - 1);
     if (direction === 'next' && films.length === filmsOnPage && !loading)
       changeFunc(page + 1);

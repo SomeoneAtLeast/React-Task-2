@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
-import './FilmsList.scss';
+import './FilmsListPage.scss';
 
-import NoFilms from '../NoFilms';
-import FilmsSearch from '../FilmsSearch';
-import FilmCard from '../FilmCard';
-import Pagination from '../UI/Pagination/Pagination';
+import NoFilms from '../../components/NoFilms';
+import FilmsSearch from '../../components/FilmsSearch';
+import FilmCard from '../../components/FilmCard';
+import Pagination from '../../components/UI/Pagination/Pagination';
 
 const FilmsList: React.FC = () => {
   const { firstRun, films, page, loading, error, searchData } =
@@ -16,8 +16,14 @@ const FilmsList: React.FC = () => {
   const { title, type, year } = searchData;
   const { fetchFilms, setPage, setLoading } = useActions();
 
-  useEffect(() => {
-    if (!firstRun) fetchFilms(title, type, year, page);
+  const firstUpdate = useRef(true);
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+
+    fetchFilms(title, type, year, page);
   }, [page]);
 
   if (error) {

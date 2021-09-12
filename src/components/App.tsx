@@ -6,30 +6,28 @@ import {
   Redirect,
 } from 'react-router-dom';
 import './App.scss';
+import { routes } from '../routes';
+import { navigationLinks } from '../navigationLinks';
 
-import FilmDetails from './FilmDetails';
-import FilmsList from './FilmsList';
+import FilmsListPage from '../pages/FilmsListPage';
 import Navigation from './UI/Navigation';
-import AboutUs from '../pages/AboutUs';
+import AboutUsPage from '../pages/AboutUsPage';
+import FilmDetailsPage from '../pages/FilmDetailsPage';
 
 const App: React.FC = () => {
-  const links = [
-    { to: '/', name: 'Главная' },
-    { to: '/about-us', name: 'О нас' },
-  ];
-
+  const { home, aboutUs, filmDetails } = routes;
   return (
     <div className="app">
       <Router>
         <header>
-          <Navigation links={links} />
+          <Navigation links={navigationLinks} />
         </header>
         <main>
           <Switch>
-            <Route exact path="/" component={FilmsList} />
-            <Route path="/film-details/:id" component={FilmDetails} />
-            <Route exact path="/about-us" component={AboutUs} />
-            <Redirect to="/" />
+            <Route exact path={home} component={FilmsListPage} />
+            <Route path={filmDetails} component={FilmDetailsPage} />
+            <Route exact path={aboutUs} component={AboutUsPage} />
+            <Redirect to={home} />
           </Switch>
         </main>
       </Router>

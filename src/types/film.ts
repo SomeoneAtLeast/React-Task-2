@@ -1,7 +1,26 @@
 export interface FilmState {
   firstRun: boolean;
-  films: any;
-  film: any;
+  films:
+    | {
+        Title: string;
+        Year: string;
+        imdbID: string;
+        Type: string;
+        Poster: string;
+      }[]
+    | [];
+  film:
+    | {
+        Poster: string;
+        Title: string;
+        Genre: string;
+        Director: string;
+        Actors: string;
+        Plot: string;
+        Released: string;
+        Runtime: string;
+      }
+    | Record<string, never>;
   searchData: {
     title: string;
     type: string;
@@ -30,7 +49,13 @@ interface FetchFilmsAction {
 
 interface FetchFilmsSucessAction {
   type: FilmActionTypes.FETCH_FILMS_SUCCES;
-  payload: any[];
+  payload: {
+    Title: string;
+    Year: string;
+    imdbID: string;
+    Type: string;
+    Poster: string;
+  }[];
 }
 
 interface FetchFilmsErrorAction {
@@ -44,12 +69,21 @@ interface FetchFilmAction {
 
 interface FetchFilmSucessAction {
   type: FilmActionTypes.FETCH_FILM_SUCCES;
-  payload: any;
+  payload: {
+    Poster: string;
+    Title: string;
+    Genre: string;
+    Director: string;
+    Actors: string;
+    Plot: string;
+    Released: string;
+    Runtime: string;
+  };
 }
 
 interface FetchFilmErrorAction {
   type: FilmActionTypes.FETCH_FILM_ERROR;
-  payload: any;
+  payload: string;
 }
 
 interface SetFilmsSearchDataAction {

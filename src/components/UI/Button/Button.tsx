@@ -2,7 +2,7 @@ import React from 'react';
 import './Button.scss';
 
 interface ButtonProps {
-  func: any;
+  func: () => void;
   children: React.ReactNode;
   disabled?: boolean;
 }
