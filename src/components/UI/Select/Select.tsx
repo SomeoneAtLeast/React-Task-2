@@ -5,11 +5,23 @@ interface SelectProps {
   options: string[];
   name: string;
   className: string;
+  value: string;
 }
 
-const Select: React.FC<SelectProps> = ({ name, options, func, className }) => {
+const Select: React.FC<SelectProps> = ({
+  name,
+  options,
+  func,
+  value,
+  className,
+}) => {
   return (
-    <select className={className} name={name} onChange={e => func(e)}>
+    <select
+      value={value}
+      className={className}
+      name={name}
+      onChange={e => func(e)}
+    >
       {options.map(option => {
         return <option key={option}>{option}</option>;
       })}

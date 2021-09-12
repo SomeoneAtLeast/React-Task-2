@@ -36,6 +36,7 @@ const FilmsSearch: React.FC = () => {
       <Input
         className="films-search__input films-search__input-title"
         name="title"
+        value={title}
         func={onChangeSearchData}
       >
         Название
@@ -43,6 +44,7 @@ const FilmsSearch: React.FC = () => {
       <Input
         className="films-search__input films-search__input-year"
         name="year"
+        value={year}
         func={onChangeSearchData}
       >
         Год
@@ -50,6 +52,7 @@ const FilmsSearch: React.FC = () => {
       <Select
         className="films-search__select films-search__select-type"
         name="type"
+        value={type}
         options={options}
         func={onChangeSearchData}
       />
