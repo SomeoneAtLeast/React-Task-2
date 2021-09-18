@@ -1,0 +1,25 @@
+.btn {
+  box-sizing: border-box;
+  padding: 10px 20px;
+  outline: none;
+  border: 2px solid rgb(243, 243, 243);
+  border-radius: 5px;
+  color: rgb(243, 243, 243);
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+}

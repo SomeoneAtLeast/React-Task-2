@@ -1,0 +1,33 @@
+.films-list-wrapper {
+  padding: 0;
+  min-height: 704px;
+}
+
+.films-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 20px 0 0 0;
+  list-style: none;
+  height: 580px;
+}
+
+.films-list__loading {
+  font-size: 16px;
+  color: rgb(243, 243, 243);
+  margin: 0 auto;
+  margin-top: 290px;
+}
+
+.films-list__film-card-link {
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
